@@ -1,0 +1,15 @@
+// Adicione este código ao arquivo functions.php ou ao plugin personalizado
+
+function custom_wp_mail_config($phpmailer) {
+    $phpmailer->isSMTP();
+    $phpmailer->Host = 'mail.yoursite.com.br';
+    $phpmailer->Port = 465;
+    $phpmailer->SMTPAuth = true;
+    $phpmailer->Username = 'naoresponda@yoursite.com.br';
+    $phpmailer->Password = 'password';
+
+    // Descomente a linha abaixo se o servidor de saída exigir SSL
+    $phpmailer->SMTPSecure = 'ssl';
+}
+
+add_action('phpmailer_init', 'custom_wp_mail_config');
